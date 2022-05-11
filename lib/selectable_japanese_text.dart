@@ -14,12 +14,11 @@ class SelectableJapaneseText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    RegExp exp =
-        RegExp(r"((?<=\{).*?(?=\}))|(?<=(\}|^)).*?(?=\{|$)");
+    RegExp exp = RegExp(r"((\{).*?(?=\}))|(\}|^).*?(?=\{|$)");
 
     List<String> split = exp
         .allMatches(text)
-        .map((e) => e.group(0))
+        .map((e) => e.group(0)?.replaceAll(RegExp(r"({|})"), ""))
         .whereType<String>()
         .toList();
 
@@ -31,9 +30,9 @@ class SelectableJapaneseText extends StatelessWidget {
         textSpans.add(
           TextSpan(
               text: pair.first,
-              style: (kanjiStyle ??
-                      const TextStyle(fontWeight: FontWeight.bold))
-                  .merge(textStyle),
+              style:
+                  (kanjiStyle ?? const TextStyle(fontWeight: FontWeight.bold))
+                      .merge(textStyle),
               recognizer: TapGestureRecognizer()
                 ..onTap = () {
                   var snackBar = SnackBar(
