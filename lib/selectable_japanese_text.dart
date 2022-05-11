@@ -17,7 +17,7 @@ class SelectableJapaneseText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    RegExp exp = RegExp(r"((\{).*?(?=\}))|(\}|^).*?(?=\{|$)");
+    RegExp exp = RegExp(r"((\{).*?(?=\}))|\\.*?\\|(\}|\\|^)?.*?(?=\{|$|\\)");
 
     List<String> split = exp
         .allMatches(text)
@@ -29,7 +29,7 @@ class SelectableJapaneseText extends StatelessWidget {
 
     for (var value in split) {
       if (value.contains("|")) {
-        var pair = value.split("|");
+        var pair = value.replaceAll("\\", "").split("|");
         textSpans.add(
           TextSpan(
               text: pair.first,
@@ -50,6 +50,14 @@ class SelectableJapaneseText extends StatelessWidget {
                   );
                   ScaffoldMessenger.of(context).showSnackBar(snackBar);
                 }),
+        );
+      } else if (value.contains("\\")) {
+        textSpans.add(
+          TextSpan(
+            text: value.replaceAll("\\", ""),
+            style: (const TextStyle(decoration: TextDecoration.underline))
+                .merge(textStyle),
+          ),
         );
       } else {
         textSpans.add(
