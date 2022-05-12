@@ -1,9 +1,7 @@
+import 'package:better_selection/better_selection.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:url_launcher/url_launcher.dart';
-
-import 'custom_text_selection_file.dart';
 
 class SelectableJapaneseText extends StatelessWidget {
   const SelectableJapaneseText(this.text,
@@ -68,22 +66,10 @@ class SelectableJapaneseText extends StatelessWidget {
         );
       }
     }
-
-    return SelectableText.rich(
-      TextSpan(
+    return TextSelectable(
+      textSpan: TextSpan(
         children: textSpans,
       ),
-      toolbarOptions: const ToolbarOptions(copy: true, selectAll: true),
-      selectionControls: CustomTextSelectionControls(
-        customButton: (text) {
-          _launchUrl("https://jisho.org/search/$text");
-        },
-      ),
     );
-  }
-
-  void _launchUrl(String url) async {
-    final Uri _url = Uri.parse(url);
-    if (!await launchUrl(_url)) throw 'Could not launch $_url';
   }
 }

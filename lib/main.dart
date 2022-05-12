@@ -1,6 +1,6 @@
+import 'package:better_selection/better_selection.dart';
 import 'package:flutter/material.dart';
-import 'package:japanese/selectable_japanese_text.dart';
-import 'package:japanese/space.dart';
+import 'package:japanese/japanese_notes_card.dart';
 
 void main() {
   runApp(const MyApp());
@@ -32,91 +32,136 @@ class MyHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Center(child: Text("Japanese")),
-      ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: const <Widget>[
-              SelectableJapaneseText("＿＿＿＿＿は＿＿＿＿＿です"),
-              SelectableJapaneseText("＿＿＿＿＿は＿＿＿＿＿じゃないです"),
-              SelectableJapaneseText("＿＿＿＿＿は＿＿＿＿＿ですか"),
-              SelectableJapaneseText("＿＿＿＿＿は{何|なん}ですか"),
-              SelectableJapaneseText("れい：{私|わたし}は{学生|がくせい}です"),
-              Text("Explanation: ______ is ______"),
-              Space(),
-              SelectableJapaneseText("{私|わたし}も＿＿＿＿＿です"),
-              SelectableJapaneseText("{私|わたし}は＿＿＿＿＿もできます"),
-              SelectableJapaneseText("れい：{私|わたし}は{日本語|にほんご}もできます"),
-              Text("Explanation: も represents ALSO"),
-              Space(),
-              SelectableJapaneseText("＿＿＿＿＿と＿＿＿＿＿"),
-              Text("Explanation: と represents AND"),
-              Space(),
-              SelectableJapaneseText("＿＿＿＿＿は＿＿＿＿＿に{住|す}んでいます"),
-              SelectableJapaneseText("どこに{住|す}んでいます"),
-              Text("Explanation: _____ lives in _____"),
-              Space(),
-              SelectableJapaneseText("＿＿＿＿＿の＿＿＿＿＿"),
-              Text("Explanation: の represents possession"),
-              SelectableJapaneseText("＿＿＿＿＿が{好|す}きです"),
-              SelectableJapaneseText("＿＿＿＿＿は{好|す}きじゃないです"),
-              SelectableJapaneseText("{何|なに}が{好|す}きじゃないです"),
-              Text("Explanation: I like _____"),
-              Space(),
-              SelectableJapaneseText("＿＿＿＿＿を＿＿＿＿＿ます"),
-              SelectableJapaneseText("＿＿＿＿＿は＿＿＿＿＿ません"),
-              SelectableJapaneseText("＿＿＿＿＿を＿＿＿＿＿ますか"),
-              SelectableJapaneseText("{何|なに}を＿＿＿＿＿ますか"),
-              Text("Explanation: I _____ _____"),
-              Space(),
-              SelectableJapaneseText("いつも＿＿＿＿＿ます"),
-              SelectableJapaneseText("よく＿＿＿＿＿ます"),
-              SelectableJapaneseText("あまり＿＿＿＿＿ません"),
-              SelectableJapaneseText("ぜんぜん＿＿＿＿＿ません"),
-              Text("Explanation: I often _____"),
-              Text("Explanation: I seldom _____"),
-              Space(),
-              SelectableJapaneseText("{好|す}きな＿＿＿＿＿は＿＿＿＿＿です"),
-              SelectableJapaneseText("{嫌|きら}いな＿＿＿＿＿は＿＿＿＿＿です"),
-              SelectableJapaneseText("れい：{嫌|きら}いな{果物|くだもの}はバナナです"),
-              Text("Explanation: The _____ I like/hate is ______"),
-              Space(),
-              SelectableJapaneseText("＿＿＿＿＿で{食|た}べます"),
-              SelectableJapaneseText("どこで{食|た}べます"),
-              SelectableJapaneseText("＿＿＿＿＿を{食|た}べます"),
-              SelectableJapaneseText("何なにを{食|た}べます"),
-              Text("Explanation: I eat at _____"),
-              Text("Explanation: I eat _____"),
-              Space(),
-              SelectableJapaneseText("＿＿＿＿\\い\\です"),
-              SelectableJapaneseText("＿＿＿＿\\く\\ないです"),
-              SelectableJapaneseText("れい：{高|たか}いです"),
-              SelectableJapaneseText("れい：{高|たか}くないです"),
-              Text("Explanation: It is い-Adj"),
-              Space(),
-              SelectableJapaneseText("＿＿＿＿＿に{住|す}んでいます"),
-              SelectableJapaneseText("＿＿＿＿＿と{住|す}んでいます"),
-              SelectableJapaneseText("{誰|だれ}と{住|す}んでいます"),
-              SelectableJapaneseText("{一人|ひとり}で{住|す}んでいます"),
-              Text("Explanation: I live with _____"),
-              Text("Explanation: I live by myself"),
-              Space(),
-              SelectableJapaneseText("＿＿＿＿＿があります"),
-              SelectableJapaneseText("＿＿＿＿＿はありません"),
-              SelectableJapaneseText("＿＿＿＿＿に（は）{何|なに}がありますか"),
-              SelectableJapaneseText("＿＿＿＿＿が＿＿＿＿＿あります"),
-              SelectableJapaneseText("＿＿＿＿＿がいくつありますか"),
-              Text("Explanation: I have _____"),
-              Text("Explanation: What is in ______"),
-              Text("Explanation: I have _____ _____"),
-              Text("Explanation: How many _____ do you have?"),
-            ],
+    return SelectableScope(
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Center(child: Text("Japanese")),
+        ),
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: const <Widget>[
+                  JapaneseNotesCard(
+                    [
+                      "＿＿＿＿＿は＿＿＿＿＿です",
+                      "＿＿＿＿＿は＿＿＿＿＿じゃないです",
+                      "＿＿＿＿＿は＿＿＿＿＿ですか",
+                      "＿＿＿＿＿は{何|なん}ですか",
+                      "れい：{私|わたし}は{学生|がくせい}です",
+                      "Explanation: ______ is ______",
+                    ],
+                  ),
+                  JapaneseNotesCard(
+                    [
+                      "{私|わたし}も＿＿＿＿＿です",
+                      "{私|わたし}は＿＿＿＿＿もできます",
+                      "れい：{私|わたし}は{日本語|にほんご}もできます",
+                      "Explanation: も represents ALSO",
+                    ],
+                  ),
+                  JapaneseNotesCard(
+                    [
+                      "＿＿＿＿＿と＿＿＿＿＿",
+                      "Explanation: と represents AND",
+                    ],
+                  ),
+                  JapaneseNotesCard(
+                    [
+                      "＿＿＿＿＿は＿＿＿＿＿に{住|す}んでいます",
+                      "どこに{住|す}んでいます",
+                      "Explanation: _____ lives in _____",
+                    ],
+                  ),
+                  JapaneseNotesCard(
+                    [
+                      "＿＿＿＿＿の＿＿＿＿＿",
+                      "Explanation: の represents possession",
+                    ],
+                  ),
+                  JapaneseNotesCard(
+                    [
+                      "＿＿＿＿＿が{好|す}きです",
+                      "＿＿＿＿＿は{好|す}きじゃないです",
+                      "{何|なに}が{好|す}きじゃないです",
+                      "Explanation: I like _____",
+                    ],
+                  ),
+                  JapaneseNotesCard(
+                    [
+                      "＿＿＿＿＿を＿＿＿＿＿ます",
+                      "＿＿＿＿＿は＿＿＿＿＿ません",
+                      "＿＿＿＿＿を＿＿＿＿＿ますか",
+                      "{何|なに}を＿＿＿＿＿ますか",
+                      "Explanation: I _____ _____",
+                    ],
+                  ),
+                  JapaneseNotesCard(
+                    [
+                      "いつも＿＿＿＿＿ます",
+                      "よく＿＿＿＿＿ます",
+                      "あまり＿＿＿＿＿ません",
+                      "ぜんぜん＿＿＿＿＿ません",
+                      "Explanation: I often _____",
+                      "Explanation: I seldom _____",
+                    ],
+                  ),
+                  JapaneseNotesCard(
+                    [
+                      "{好|す}きな＿＿＿＿＿は＿＿＿＿＿です",
+                      "{嫌|きら}いな＿＿＿＿＿は＿＿＿＿＿です",
+                      "れい：{嫌|きら}いな{果物|くだもの}はバナナです",
+                      "Explanation: The _____ I like/hate is ______",
+                    ],
+                  ),
+                  JapaneseNotesCard(
+                    [
+                      "＿＿＿＿＿で{食|た}べます",
+                      "どこで{食|た}べます",
+                      "＿＿＿＿＿を{食|た}べます",
+                      "何なにを{食|た}べます",
+                      "Explanation: I eat at _____",
+                      "Explanation: I eat _____",
+                    ],
+                  ),
+                  JapaneseNotesCard(
+                    [
+                      "＿＿＿＿\\い\\です",
+                      "＿＿＿＿\\く\\ないです",
+                      "れい：{高|たか}いです",
+                      "れい：{高|たか}くないです",
+                      "Explanation: It is い-Adj",
+                    ],
+                  ),
+                  JapaneseNotesCard(
+                    [
+                      "＿＿＿＿＿に{住|す}んでいます",
+                      "＿＿＿＿＿と{住|す}んでいます",
+                      "{誰|だれ}と{住|す}んでいます",
+                      "{一人|ひとり}で{住|す}んでいます",
+                      "Explanation: I live with _____",
+                      "Explanation: I live by myself",
+                    ],
+                  ),
+                  JapaneseNotesCard(
+                    [
+                      "＿＿＿＿＿があります",
+                      "＿＿＿＿＿はありません",
+                      "＿＿＿＿＿に（は）{何|なに}がありますか",
+                      "＿＿＿＿＿が＿＿＿＿＿あります",
+                      "＿＿＿＿＿がいくつありますか",
+                      "Explanation: I have _____",
+                      "Explanation: What is in ______",
+                      "Explanation: I have _____ _____",
+                      "Explanation: How many _____ do you have?",
+                    ],
+                  ),
+                ],
+              ),
+            ),
           ),
         ),
       ),
