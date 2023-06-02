@@ -15,7 +15,8 @@ class SelectableJapaneseText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    RegExp exp = RegExp(r"((\{).*?(?=\}))|\\.*?\\|(\}|\\|^)?.*?(?=\{|$|\\)");
+    RegExp exp = RegExp(
+        r"((\{).*?(?=\}))|\\.*?\\|\-.*?\-|(\}|\\|\-|^)?.*?(?=\{|$|\\|\-)");
 
     List<String> split = exp
         .allMatches(text)
@@ -57,6 +58,14 @@ class SelectableJapaneseText extends StatelessWidget {
                 .merge(textStyle),
           ),
         );
+      } else if (value.contains("-")) {
+        textSpans.add(
+          TextSpan(
+            text: value.replaceAll("-", ""),
+            style: (const TextStyle(decoration: TextDecoration.lineThrough))
+                .merge(textStyle),
+          ),
+        );
       } else {
         textSpans.add(
           TextSpan(
@@ -66,8 +75,8 @@ class SelectableJapaneseText extends StatelessWidget {
         );
       }
     }
-    return TextSelectable(
-      textSpan: TextSpan(
+    return SelectableText.rich(
+      TextSpan(
         children: textSpans,
       ),
     );
